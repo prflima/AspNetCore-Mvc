@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DevIO.Business.Models
 {
@@ -13,5 +11,6 @@ namespace DevIO.Business.Models
 
         // EF Relations
         public IEnumerable<Produto> Produtos { get; set; }
+        public Endereco Endereco { get; set; }
     }
 }
