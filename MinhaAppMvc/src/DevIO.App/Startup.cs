@@ -1,3 +1,4 @@
+using DevIO.App.Configuration;
 using DevIO.App.Data;
 using DevIO.Data.Context;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,8 @@ namespace DevIO.App
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.ResolveDependencies();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
