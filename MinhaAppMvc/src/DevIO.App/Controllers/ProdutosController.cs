@@ -114,8 +114,17 @@ namespace DevIO.App.Controllers
 
         private async Task<ProdutoViewModel> PopularFornecedores(ProdutoViewModel produto)
         {
-            produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(_fornecedorRepository.ObterTodos());
-            return produto;
+            try
+            {
+                var fornecedores = await _fornecedorRepository.ObterTodos();
+                produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(fornecedores);
+                return produto;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }
