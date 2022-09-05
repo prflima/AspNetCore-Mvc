@@ -17,13 +17,16 @@ namespace DevIO.App.Configuration
         public AutoMapperConfig()
         {
             ConfigureMappings();
-        } 
+        }
 
         private void ConfigureMappings()
         {
             CreateMap<Fornecedor, FornecedorViewModel>().ReverseMap();
             CreateMap<Endereco, EnderecoViewModel>().ReverseMap();
-            CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+            CreateMap<Produto, ProdutoViewModel>();
+
+            CreateMap<ProdutoViewModel, Produto>()
+                .ForMember(vm => vm.Fornecedor, opt => opt.MapFrom(m => m.Fornecedor));
         }
     }
 }
